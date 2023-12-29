@@ -1,5 +1,4 @@
 from fastapi import APIRouter, Depends, status, HTTPException, Response
-from typing import Annotated
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
 from ..database import get_db
 from sqlalchemy.orm import Session

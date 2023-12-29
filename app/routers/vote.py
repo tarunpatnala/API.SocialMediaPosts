@@ -1,12 +1,9 @@
 from fastapi import APIRouter, Depends, Response, status, HTTPException
 from sqlalchemy.orm import Session
-from typing import Annotated
 from ..database import get_db
 from .. import oauth2, models, schemas
 
 router = APIRouter(tags=["Vote"], prefix="/vote")
-
-db_dependency = Annotated[Session, Depends(get_db)]
 
 @router.post("/")
 async def vote(payload: schemas.votes, current_user: str = Depends(oauth2.get_current_user), db: Session=Depends(get_db)):
