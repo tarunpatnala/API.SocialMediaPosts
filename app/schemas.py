@@ -55,4 +55,4 @@ class token_data(BaseModel):
 
 class votes(BaseModel):
     post_id: int
-    vote_dir: conint(le=1)
+    vote_dir: int
