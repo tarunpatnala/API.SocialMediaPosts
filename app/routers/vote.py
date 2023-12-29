@@ -9,7 +9,7 @@ router = APIRouter(tags=["Vote"], prefix="/vote")
 db_dependency = Annotated[Session, Depends(get_db)]
 
 @router.post("/")
-async def vote(db: db_dependency, payload: schemas.votes, current_user: str = Depends(oauth2.get_current_user)):
+async def vote(payload: schemas.votes, current_user: str = Depends(oauth2.get_current_user), db: Session=Depends(get_db)):
     
     post = db.query(models.Vote).filter(models.Vote.post_id==payload.post_id).first()
     if not post:

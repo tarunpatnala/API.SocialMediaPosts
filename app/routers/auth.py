@@ -7,11 +7,9 @@ from .. import schemas, models, util, oauth2
 
 
 router = APIRouter(tags=['Authentication'])
-db_dependency = Annotated[Session, Depends(get_db)]
-oauth_dependency = Annotated[OAuth2PasswordRequestForm, Depends()]
 
 @router.post('/login', response_model=schemas.token)
-def login(db: db_dependency, user_cred: oauth_dependency):
+def login(user_cred: OAuth2PasswordRequestForm, db: Session=Depends(get_db)):
     user = db.query(models.User).filter(models.User.email == user_cred.username).first()
     if not user: 
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=f"invalid Credentials")
