@@ -8,9 +8,9 @@ router = APIRouter(tags=["Vote"], prefix="/vote")
 @router.post("/")
 async def vote(payload: schemas.votes, current_user: str = Depends(oauth2.get_current_user), db: Session=Depends(get_db)):
     
-    post = db.query(models.Vote).filter(models.Vote.post_id==payload.post_id).first()
+    post = db.query(models.Post).filter(models.Post.id==payload.post_id).first()
     if not post:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, details=f"post with id: {payload.post_id} does not exist")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"post with id:{payload.post_id} does not exist")
 
     vote_exist = db.query(models.Vote).filter(models.Vote.post_id==payload.post_id, models.Vote.user_id==current_user.id)
     

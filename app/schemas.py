@@ -25,6 +25,8 @@ class user_response(BaseModel):
 
 class response_model(base_post):
     id: int
+    published: bool
+    rating: Optional[int]
     created_at: datetime
     owner_id: int
     owner: user_response
