@@ -69,7 +69,7 @@ jobs:
           host: ${{secrets.PROD_HOST}}
           username: ${{secrets.PROD_USERNAME}}
           password: ${{secrets.PROD_PASSWORD}}
-          key: $${{secrets.PROD_PRIVATE_KEY}}
+          key: ${{secrets.PROD_PRIVATE_KEY}}
           script: |
             cd app/src
             git pull
