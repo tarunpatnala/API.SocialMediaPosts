@@ -5,7 +5,7 @@ import pytest
 
 def test_root(client):
     res = client.get("/")
-    assert res.json().get("message") == "Welcome to Amature Posts!"
+    assert res.json().get("message") == "Welcome to Amature Posts!!!"
     assert res.status_code == 200
 
 def test_create_user(client):
