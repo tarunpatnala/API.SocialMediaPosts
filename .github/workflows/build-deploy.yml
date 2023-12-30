@@ -75,5 +75,3 @@ jobs:
             cd app/src
             git pull
             echo ${{secrets.PROD_PASSWORD}} | sudo -S systemctl restart api.service
-            docker-compose down 
-            docker-compose up --build -d
