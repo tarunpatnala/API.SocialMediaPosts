@@ -27,4 +27,4 @@ app.include_router(user.router)
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome to Amature Posts!"}
+    return {"message": "Welcome to Amature Posts!!!"}
