@@ -70,6 +70,7 @@ jobs:
           username: ${{secrets.PROD_USERNAME}}
           password: ${{secrets.PROD_PASSWORD}}
           key: ${{secrets.PROD_PRIVATE_KEY}}
+          passphrase: ${{secrets.PROD_PASSWORD}}
           script: |
             cd app/src
             git pull
